@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<script name="jquery/jquery.js" library="primefaces"></script>
+</h:head>
+
+
+<h:body>
+
+	<p:outputLabel style="text-align:center;" value="PrimeFaces JSF Example"></p:outputLabel>
+	<p:dataTable value="#{employeeBean.employees}" var="employee">
+		<p:column>
+			<f:facet name="header">
+				<h:outputText value="Employee ID" />
+			</f:facet>
+			<h:outputText value="#{employee.empId}" />
+		</p:column>
+		<p:column>
+			<f:facet name="header">
+				<h:outputText value="Employee Name" />
+			</f:facet>
+			<h:outputText value="#{employee.empName}" />
+		</p:column>
+	</p:dataTable>
+	
+	<p:outputLabel value="Primefaces Ajax Example"></p:outputLabel>
+	
+	<f:view>
+		<h:form prependId="false">
+			<p:outputLabel value="Enter your Name: "></p:outputLabel>
+			<p:inputText value="#{employeeBean.employeeName}" id="inputName">
+				<p:ajax process="inputName" update="outputName" listener="#{employeeBean.listener}" event="keyup"></p:ajax>
+			</p:inputText>
+			<p:outputLabel value="#{employeeBean.employeeName}" id="outputName"></p:outputLabel>
+		</h:form>
+	</f:view>
+	
+	
+</h:body>
+
+</html>
